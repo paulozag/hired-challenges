@@ -64,3 +64,7 @@ def first_last_length_spread list
   total_distance = [0, (first - last + len - 1)].max
   (total_distance/2.0).ceil
 end
+
+p exp [1,2,3,4,5]
+p exp [1,1,1,1,1,1]
+p exp [6,5,4,3,2,1]
