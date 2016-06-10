@@ -9,6 +9,7 @@ def compare_lists first_words, second_words
 end
 
 def is_anagram? word1, word2
+  return false unless word1.length == word2.length
   hash1 = build_histogram word1
   hash2 = build_histogram word2
 

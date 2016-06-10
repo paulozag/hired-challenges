@@ -26,3 +26,10 @@ Note that your function will receive the following arguements:
 <ul>
 <li>your function is expected to print the results in less than 2 seconds</li>
 </ul>
+
+**Solution**:
+My first brute force instinct was to simply sort both (split into an array) words and look for equality/inequality when popping from both arrays.
+
+Greater efficiency can be attained by building a histogram (in a hash) for all the chars in both words.  side by side comparisons can be made by looping through one hash-map and making sure the other map matches all keys and values.
+
+Implementing this soulution brings the time complexity down from O(n * log n) to O(n).
