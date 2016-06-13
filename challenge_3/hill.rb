@@ -45,7 +45,6 @@ end
 
 def index_of_lowest array
   temp = adjust_array_values_for_position_lowest array
-  array.each_with_index {|v,i| temp << v-i}
   min = temp[0]
   index = 0
   temp.each_with_index do |val, i|
@@ -76,3 +75,4 @@ end
 p exp [1,2,3,4,5]
 p exp [1,1,1,1,1,1]
 p exp [6,5,4,3,2,1]
+
