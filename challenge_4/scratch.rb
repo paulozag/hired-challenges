@@ -51,7 +51,7 @@ end
 
 data = [1,5,3,9,12,3,2,0,6]
 
-a = Deviation_Finder.new(data, 2)
+a = Deviation_Finder.new(data, 1)
 
 p a.array
 a.push_values 4, 12, a.high_ranges
