@@ -1,3 +1,5 @@
+require 'pry'
+
 array = [6,9,4,7,4,1]
 d_len = 3
 
@@ -23,16 +25,25 @@ class Deviation_Finder
 
 
   def solve
-    # populate_high_array
+    populate_high_array
     # populate_low_array
+    differential_array = []
+    high_ranges.each_with_index {|v,i|
+      differential_array << v-@array[i]}
+    differential_array.max
+  end
+
+  def populate_high_array
+    high_slice 0, @length - 1
   end
 
   def high_slice i_start, i_end
     max_index = @array[i_start..i_end].each_with_index.max[1]
-    max_value = @array[max_index]
-    push_values max_index, max_value, @high_ranges
-    (high_slice @array[(max_index + 1)..i_end]) unless max_index + @d > i_end
-    (high_slice @array[i_start...(max_index)]) unless max_index - @d < i_start
+    max_value = @array[max_index + i_start]
+    push_values max_index + i_start, max_value, @high_ranges
+    # binding.pry
+    (high_slice max_index + i_start + 1,i_end) unless (max_index + @d + i_start) >= i_end
+    (high_slice i_start, max_index + i_start - 1) unless (max_index - @d + i_start) <= i_start
   end
 
   def low_slice i_start, i_end
@@ -44,16 +55,18 @@ class Deviation_Finder
   def push_values index, value, array
     start = [0, (index - @d)].max
     finish = [(@length - 1), index + @d].min
-    (start..finish).to_a.each { |i| array[i] ||= value; p i }
+    (start..finish).to_a.each { |i| array[i] ||= value }
   end
 
 end
 
 data = [1,5,3,9,12,3,2,0,6]
 
-a = Deviation_Finder.new(data, 1)
+a = Deviation_Finder.new(array, d_len)
 
-p a.array
-a.push_values 4, 12, a.high_ranges
-p a.array
-p a.high_ranges
+# p a.array
+# a.solve
+# p a.array
+# p a.high_ranges
+
+p a.solve
