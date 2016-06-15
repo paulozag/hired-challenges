@@ -7,9 +7,10 @@ d_len = 3
 
 # test data
 test_array = []
-200.times do
-  test_array << rand(0..10000)
+100000.times do
+  test_array << rand(0..100000000000)
 end
+test_d = rand(2...100000)
 
 class Deviation_Finder
 
@@ -62,7 +63,7 @@ end
 
 data = [1,5,3,9,12,3,2,0,6]
 
-a = Deviation_Finder.new(array, d_len)
+a = Deviation_Finder.new(test_array, test_d)
 
 # p a.array
 # a.solve
