@@ -6,8 +6,10 @@ def generate_test_array
     array << (rand(2000) - 1000)
   end
   array
-  # [-812, -369, -750, 86, -441, 691, -784, 746, -536, -405]
-  [-932, 618, -529, 688, -259, 104, 50, 98, -371, -245]
+  [-812, -369, -750, 86, -441, 691, -784, 746, -536, -405]
+  # [-932, 618, -529, 688, -259, 104, 50, 98, -371, -245]
+  # [-751, -327, -123, 521, -557, -422, 924, 182, -56, -722]
+  # [520, 534, -504, 44, -340, 604, -897, -751, 58, -723]
 end
 
 def find_max_dev array
@@ -25,6 +27,7 @@ def find_max_dev array
   low_index = bounds.each_with_index.min[1]
   low_span_beg = index_of_low_span_beg bounds, low_index
   high_span_end = index_of_high_span_end bounds, low_index
+  # binding.pry
   p array
   # p "*&*" * 40
   p bounds
@@ -34,17 +37,17 @@ def find_max_dev array
 end
 
 def index_of_low_span_beg bounds, low_index
-  binding.pry
+  # binding.pry
   result = bounds[0..low_index].each_with_index.max[1]
-  ((result == 0 && bounds[0]) <= 0) ? 0 : result + 1
+  bounds[result] < 0 ? 0 : result + 1
 end
 
 def index_of_high_span_end bounds, low_index
-  binding.pry
-  return [] if low_index == (bounds.length) -1
-  result = bounds[(low_index+1)..-1].each_with_index.max[1]
-  last_element_index = bounds.length - 1
-  (result == last_element_index && bounds[-1] > bounds[-2]) ? result : result - 1
+  # binding.pry
+  end_index = bounds.length - 1
+  return end_index if low_index == end_index
+  result = bounds[(low_index+1)..-1].each_with_index.max[1] + low_index
+  (result == end_index && bounds[-1] > bounds[-2]) ? result : result + 1
 end
 
 find_max_dev generate_test_array
