@@ -4,7 +4,7 @@ Given an array of integer elements, and an ineger d, please consider all the seq
 
 **Your task is to**
 <ul>
-    <li>write a function that finds the maximym value among the deviations of all the sequences considered above</li>
+    <li>write a function that finds the maximum value among the deviations of all the sequences considered above</li>
     
     <li>print the result to the standard output</li>
 </ul>

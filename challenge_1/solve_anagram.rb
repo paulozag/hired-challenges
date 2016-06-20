@@ -1,10 +1,10 @@
 require './testing_data.rb'
 
 def compare_lists first_words, second_words
-  firsts = first_words.dup
-  seconds = second_words.dup
-  while !firsts.empty?
-    p is_anagram? firsts.shift, seconds.shift
+  index = 0
+  while index < first_words.length
+    p is_anagram? first_words[index], second_words[index]
+    index += 1
   end
 end
 
@@ -23,10 +23,5 @@ def build_histogram word
   word.split('').inject(Hash.new(0)){ |h,x| h[x] +=1; h}
 end
 
-list1 = ['cinema', 'host', 'aba', 'train']
-list2 = ['iceman', 'shot', 'bab', 'rain']
-
-# list1 = ['cinema']
-# list2 = ['iceman']
 data = make_word_list
 compare_lists data[:first_words], data[:second_words]
