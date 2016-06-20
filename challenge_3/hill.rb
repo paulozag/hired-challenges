@@ -5,8 +5,11 @@ require './test_data.rb'
 def hill list
   return 0 if list.length < 2
   arr = list.dup
-  spread = highest_to_low_spread arr
+  spread = highest_to_low_spread arr # by calling the h2l spread on the entire
+                                    # array, a floor of the spread is generated
   while arr.length > 1
+    # somewhere in the original array is a subarray that when the highest to lowest method is run upon it, yields the max value of the spread
+    # this loop generates the possible subarrays and finds the max spread when those arrays are run through highest_to_lowest_spread
     high = index_of_highest arr
     low = (index_of_lowest arr[high..-1]) + high
     local_spread = first_last_length_spread arr[high..low]
