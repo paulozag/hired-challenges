@@ -1,14 +1,17 @@
-def exp list
+require './test_data.rb'
+
+
+
+def hill list
   return 0 if list.length < 2
   arr = list.dup
   spread = highest_to_low_spread arr
   while arr.length > 1
     high = index_of_highest arr
     low = (index_of_lowest arr[high..-1]) + high
-
     local_spread = first_last_length_spread arr[high..low]
-    spread = [spread,local_spread].max
 
+    spread = [spread,local_spread].max
     arr = arr[0...high]
   end
   spread
@@ -72,7 +75,6 @@ def first_last_length_spread list
   (total_distance/2.0).ceil
 end
 
-p exp [1,2,3,4,5]
-p exp [1,1,1,1,1,1]
-p exp [6,5,4,3,2,1]
+
+perform_test
 
